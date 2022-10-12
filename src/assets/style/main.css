@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.app-wrapper {
+    padding: 30px;
+    display: flex;
+}
+.elevator {
+    padding-right: 10px;
+    position: relative;
+}
+.floor-block {
+    border: 1px solid #bfbab5;
+    width: 100px;
+    height: 120px;
+    box-sizing: border-box;
+}
+.elevator-buttons {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column-reverse;
+}
+
+/*Styles for Cabin*/
+.cabin {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    bottom: 0;
+    background-color: #A6F5AC;
+}
+.cabin.blink {
+    animation: blink 1s linear infinite;
+}
+.cabin-display {
+    margin: 5px auto;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    background-color: #51A857;
+}
+.display-arrow-icon.down {
+    transform: rotate(180deg);
+}
+.display-floor-number{
+    font-size: 16pt;
+}
+@keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: .5;}
+    100%{opacity: 1;}
+}
+
+/*Styles for Button*/
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    cursor: pointer;
+}
+.button-icon {
+    color: #bfbab5;
+}
+
+.button-icon.selected {
+    color: #A6F5AC;
+}
