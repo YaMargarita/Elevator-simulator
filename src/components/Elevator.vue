@@ -1,12 +1,12 @@
 <template>
   <div class="app-wrapper">
     <div v-for="lift in liftCount"
-        :key="lift">
+         :key="lift">
 
       <div class="elevator">
         <cabin
             ref="cabin"
-            :currentCabin="lifts[lift-1]"
+            :currentCabin="lifts[lift - 1]"
             @cabinReach="cabinReach"
             @cabinFinish="cabinFinish"
         />
@@ -33,7 +33,7 @@
 
 <script>
 import Cabin from '@/components/Cabin';
-import ElevatorButton from '@/components/Button';
+import ElevatorButton from '@/components/ElevatorButton';
 export default {
   name: "Elevator",
   components: {
@@ -62,7 +62,7 @@ export default {
       const lift = {
         index: i,
         currentFloor: 1,
-        nextFloor: '',
+        nextFloor: null,
         inMove: false,
         movementDirection: ''
       };

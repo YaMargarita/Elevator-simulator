@@ -1,10 +1,11 @@
 <template>
   <div class="button-wrapper" @click="floorSelected(button)">
     <span>{{ button }}</span>
-    <font-awesome-icon icon="square"
-                       class="fa-sm button-icon"
-                       size="lg"
-                       :class="{'selected' : selectedButtons.includes(button)}"
+    <font-awesome-icon
+        icon="square"
+        class="fa-sm button-icon"
+        size="lg"
+        :class="{'selected' : selectedButtons.includes(button)}"
     />
   </div>
 </template>

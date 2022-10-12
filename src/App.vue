@@ -12,8 +12,8 @@ export default {
   },
   data() {
     return {
-      liftCount: 3, // количество шахт лифта
-      floorCount: 5 // количество этажей
+      liftCount: 1,
+      floorCount: 5
     }
   }
 }

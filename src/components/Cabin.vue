@@ -1,9 +1,10 @@
 <template>
   <div class="cabin" ref="cabin">
     <div v-if="cabin.inMove" class="cabin-display">
-      <font-awesome-icon icon="arrow-up"
-                         class="display-arrow-icon"
-                         :class="{'down' : cabin.movementDirection === 'down'}"
+      <font-awesome-icon
+          icon="arrow-up"
+          class="display-arrow-icon"
+          :class="{'down' : cabin.movementDirection === 'down'}"
       />
       <span class="display-floor-number">{{ cabin.nextFloor }}</span>
     </div>
