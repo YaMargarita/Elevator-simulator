@@ -3,9 +3,9 @@
     <span>{{ button }}</span>
     <font-awesome-icon
         icon="square"
+        ref="btn-icon"
         class="fa-sm button-icon"
         size="lg"
-        :class="{'selected' : selectedButtons.includes(button)}"
     />
   </div>
 </template>
@@ -16,6 +16,14 @@ export default {
   props: {
     button: Number,
     selectedButtons: Array
+  },
+  watch: {
+    selectedButtons: {
+      handler(value) {
+        const icon = this.$refs['btn-icon'].$el;
+        value.includes(this.button) ? icon.classList.add('selected') : icon.classList.remove('selected');
+      }, deep: true
+    }
   },
   methods: {
     floorSelected(floor) {

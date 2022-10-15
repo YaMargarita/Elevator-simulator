@@ -1,10 +1,10 @@
 <template>
   <div class="cabin" ref="cabin">
-    <div v-if="cabin.inMove" class="cabin-display">
+    <div v-show="cabin.inMove" class="cabin-display">
       <font-awesome-icon
           icon="arrow-up"
           class="display-arrow-icon"
-          :class="{'down' : cabin.movementDirection === 'down'}"
+          ref="arrow-icon"
       />
       <span class="display-floor-number">{{ cabin.nextFloor }}</span>
     </div>
@@ -24,11 +24,17 @@ export default {
   },
   created() {
     this.cabin = this.currentCabin;
+
+    this.emitter.on('move', ({ currentCabin }) => {
+      if (currentCabin === this.cabin.index) this.movement();
+    });
   },
   methods: {
     movement() {
       this.cabin.inMove = true;
       this.cabin.movementDirection = this.cabin.nextFloor > this.cabin.currentFloor ? 'up' : 'down';
+      this.$refs['arrow-icon'].$el.classList.add(this.cabin.movementDirection);
+
       this.animationMovement();
       this.cabin.currentFloor = this.cabin.nextFloor;
 
@@ -40,6 +46,7 @@ export default {
         await this.blinkAnimation();
         this.cabin.nextFloor = '';
         this.cabin.inMove = false;
+        this.$refs['arrow-icon'].$el.classList.remove(this.cabin.movementDirection);
         this.$emit('cabin-finish', this.cabin);
       };
     },

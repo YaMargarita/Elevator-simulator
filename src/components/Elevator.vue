@@ -76,7 +76,7 @@ export default {
 
         if (cabin) {
           cabin.nextFloor = this.selectedFloors.shift();
-          this.$refs.cabin[cabin.index].movement();
+          this.emitter.emit('move', { currentCabin: cabin.index });
         }
       }
     },
